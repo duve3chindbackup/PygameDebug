@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pygamedebugscreen"
+dynamic = ["version"]
+description = 'Create pygame screens for debugging in seconds! With text and more!'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "U.N. Owen", email = "void@some.where" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  'pygame-ce'
+]
+
+[project.urls]
+Documentation = "https://github.com/U.N. Duve3/pygamedebugscreen#readme"
+Issues = "https://github.com/U.N. Duve3/pygamedebugscreen/issues"
+Source = "https://github.com/U.N. Duve3/pygamedebugscreen"
+
+[tool.hatch.version]
+path = "src/pygamedebugscreen/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/pygamedebugscreen tests}"
+
+[tool.coverage.run]
+source_pkgs = ["pygamedebugscreen", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/pygamedebugscreen/__about__.py",
+]
+
+[tool.coverage.paths]
+pygamedebugscreen = ["src/pygamedebugscreen", "*/pygamedebugscreen/src/pygamedebugscreen"]
+tests = ["tests", "*/pygamedebugscreen/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
